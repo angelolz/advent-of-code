@@ -1,14 +1,22 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+
 public class Day1
 {
 	//this was for part 2
 	static String[][] wordDigits = new String[][]{{"one", "1"}, {"two", "2"}, {"three", "3"}, {"four", "4"}, {"five", "5"}, {"six", "6"}, {"seven", "7"}, {"eight", "8"}, {"nine", "9"}};
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException
+    {
 		partOne();
 		partTwo();
 	}
 
-	public static void partOne() {
+	public static void partOne() throws IOException
+	{
 		List<String> lines = Files.readAllLines(Paths.get("input.txt"));
 
 		int answer = 0;
@@ -36,7 +44,8 @@ public class Day1
 
 	
 
-	public static void partTwo() {
+	public static void partTwo() throws IOException
+	{
 		List<String> lines = Files.readAllLines(Paths.get("input.txt"));
 
 		int answer = 0;
