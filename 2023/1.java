@@ -2,7 +2,7 @@ public class Day1
 {
     public static void main(String[] args) throws IOException {
 
-		List<String> lines = Files.readAllLines(Paths.get("/Users/alegaspi/Library/Application Support/JetBrains/IntelliJIdea2022.3/scratches/fun/input.txt"));
+		List<String> lines = Files.readAllLines(Paths.get("input.txt"));
 
 		int answer = 0;
 		for(String line : lines)
