@@ -69,7 +69,7 @@ public class Day2
                 case "blue" -> valid = amount <= 14;
             }
 
-            if(!valid) System.out.printf("   - too much %s -- %d%n", setMatcher.group(2).trim(), amount);
+//            if(!valid) System.out.printf("   - too much %s -- %d%n", setMatcher.group(2).trim(), amount);
         }
 
         return valid;

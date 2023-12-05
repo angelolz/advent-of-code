@@ -22,13 +22,14 @@ public class Day1
 		int answer = 0;
 		for(String line : lines)
 		{
+//			System.out.println(line);
 			StringBuilder str = new StringBuilder();
 			char currDigit = 0;
 			for(int i = 0; i < line.length(); i++)
 			{
 				if(isDigit(line.charAt(i))) {
 					currDigit = line.charAt(i);
-					if(str.length() == 0) {
+					if(str.isEmpty()) {
 						str.append(line.charAt(i));
 					}
 				}
@@ -39,7 +40,7 @@ public class Day1
 			answer += Integer.parseInt(str.toString());
 		}
 
-		System.out.println(answer);
+		System.out.println("D1P1 Answer: " + answer);
 	}
 
 	
@@ -50,7 +51,7 @@ public class Day1
 
 		int answer = 0;
 		for (String line : lines) {
-			System.out.println(line);
+//			System.out.println(line);
 			StringBuilder sb = new StringBuilder();
 			int start = 0;
 			for (int i = 0; i < line.length(); i++) {
@@ -74,18 +75,17 @@ public class Day1
 			}
 
 			if(sb.length() == 1) {
-				System.out.println("   - " + Integer.parseInt("" + sb.charAt(0) + sb.charAt(0)));
+//				System.out.println("   - " + Integer.parseInt("" + sb.charAt(0) + sb.charAt(0)));
 				answer += Integer.parseInt("" + sb.charAt(0) + sb.charAt(0));
 			}
 
 			else {
-				System.out.println("   - " + Integer.parseInt("" + sb.charAt(0) + sb.charAt(sb.length() - 1)));
+//				System.out.println("   - " + Integer.parseInt("" + sb.charAt(0) + sb.charAt(sb.length() - 1)));
 				answer += Integer.parseInt("" + sb.charAt(0) + sb.charAt(sb.length() - 1));
-
 			}
 		}
 
-		System.out.println("answer: " + answer);
+		System.out.println("D1P2 Answer: " +answer);
 	}
 	
 	private static boolean isDigit(char c) {
