@@ -11,14 +11,13 @@ public class Day1
 
     public static void main(String[] args) throws IOException
     {
-		partOne();
-		partTwo();
+		List<String> lines = Files.readAllLines(Paths.get("2023/inputs/1.txt"));
+		partOne(lines);
+		partTwo(lines);
 	}
 
-	public static void partOne() throws IOException
+	public static void partOne(List<String> lines)
 	{
-		List<String> lines = Files.readAllLines(Paths.get("input.txt"));
-
 		int answer = 0;
 		for(String line : lines)
 		{
@@ -45,10 +44,8 @@ public class Day1
 
 	
 
-	public static void partTwo() throws IOException
+	public static void partTwo(List<String> lines)
 	{
-		List<String> lines = Files.readAllLines(Paths.get("input.txt"));
-
 		int answer = 0;
 		for (String line : lines) {
 //			System.out.println(line);

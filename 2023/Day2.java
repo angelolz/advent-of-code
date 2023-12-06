@@ -9,13 +9,13 @@ public class Day2
 {
     public static void main(String[] args) throws IOException
     {
-        partOne();
-        partTwo();
+        List<String> lines = Files.readAllLines(Paths.get("2023/inputs/2.txt"));
+        partOne(lines);
+        partTwo(lines);
     }
 
-    public static void partOne() throws IOException
+    public static void partOne(List<String> lines)
     {
-        List<String> lines = Files.readAllLines(Paths.get("input.txt"));
         String wholeGameString = "^Game (\\d+): (.+)$";
         Pattern wholeGamePattern = Pattern.compile(wholeGameString);
 
@@ -40,9 +40,8 @@ public class Day2
         System.out.println("D2P1 Answer: " + answer);
     }
 
-    private static void partTwo() throws IOException
+    private static void partTwo(List<String> lines)
     {
-        List<String> lines = Files.readAllLines(Paths.get("input.txt"));
         int answer = 0;
         for(String line : lines)
         {

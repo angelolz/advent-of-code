@@ -8,8 +8,30 @@ public class Day3
 {
     public static void main(String[] args) throws IOException
     {
-        partOne();
-        //        partTwo();
+        List<String> lines = Files.readAllLines(Paths.get("2023/inputs/3.txt"));
+        partOne(lines);
+        partTwo(lines);
+    }
+
+    private static void partOne(List<String> lines) throws IOException
+    {
+        int answer = 0;
+        List<PartNum> numbers = extractPartNumbers(lines);
+
+        for(PartNum part : numbers)
+        {
+            if(checkCoord(lines, part))
+            {
+//                System.out.println(part.getNum() + " is a part num");
+                answer += Integer.parseInt(part.getNum());
+            }
+        }
+
+        System.out.println("D3P1 Answer: " + answer);
+    }
+
+    private static void partTwo(List<String> lines) {
+
     }
 
     private static class PartNum
@@ -49,25 +71,6 @@ public class Day3
         {
             return y;
         }
-    }
-
-    private static void partOne() throws IOException
-    {
-        List<String> lines = Files.readAllLines(Paths.get("input.txt"));
-        int answer = 0;
-        List<PartNum> numbers = extractPartNumbers(lines);
-
-
-        for(PartNum part : numbers)
-        {
-            if(checkCoord(lines, part))
-            {
-                System.out.println(part.getNum() + " is a part num");
-                answer += Integer.parseInt(part.getNum());
-            }
-        }
-
-        System.out.println("Answer: " + answer);
     }
 
     private static List<PartNum> extractPartNumbers(List<String> lines)
