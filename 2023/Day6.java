@@ -11,9 +11,7 @@ public class Day6
     public static void main(String[] args) throws IOException
     {
         List<String> lines = Files.readAllLines(Paths.get("2023/inputs/6.txt"));
-        String time = lines.get(0).substring(lines.get(0).indexOf(":") + 1).trim().replaceAll("\\s+", "");
-        String distance = lines.get(1).substring(lines.get(1).indexOf(":") + 1).trim().replaceAll("\\s+", "");
-//        partOne(lines);
+        partOne(lines);
         partTwo(lines);
     }
 
@@ -37,7 +35,7 @@ public class Day6
         String time = lines.get(0).substring(lines.get(0).indexOf(":") + 1).trim().replaceAll("\\s+", "");
         String distance = lines.get(1).substring(lines.get(1).indexOf(":") + 1).trim().replaceAll("\\s+", "");
 
-        System.out.println("D6P2 Answer: " + processRace(new BigInteger(time), new BigInteger(distance)));
+        System.out.println("D6P2 Answer: " + processRace(new BigInteger(time), new BigInteger(distance)).add(BigInteger.ONE));
     }
 
     private static BigInteger processRace(BigInteger time, BigInteger recordDistance) {
@@ -51,7 +49,7 @@ public class Day6
         for(BigInteger i = BigInteger.ONE; i.compareTo(time.divide(BigInteger.TWO)) < 0; i = i.add(BigInteger.ONE)) { //skip 0 because its definitely not gonna beat record
             BigInteger distance = getDistance(i, time, recordDistance);
             if(distance != null) {
-                System.out.printf("low  -- hold: %d | distance: %d%n", i, distance);
+//                System.out.printf("low  -- hold: %d | distance: %d%n", i, distance);
                 return i;
             }
         }
@@ -63,7 +61,7 @@ public class Day6
         for(BigInteger i = time.subtract(BigInteger.ONE); i.compareTo(time.divide(BigInteger.TWO).add(BigInteger.ONE)) > 0; i = i.subtract(BigInteger.ONE)) { //skip last ms because its def not gonna beat record
             BigInteger distance = getDistance(i, time, recordDistance);
             if(distance != null) {
-                System.out.printf("high  -- hold: %d | distance: %d%n", i, distance);
+//                System.out.printf("high  -- hold: %d | distance: %d%n", i, distance);
                 return i;
             }
         }
@@ -73,7 +71,7 @@ public class Day6
 
     private static BigInteger getDistance(BigInteger i, BigInteger time, BigInteger recordDistance) {
         BigInteger dist = time.subtract(i).multiply(i);
-        System.out.printf("time: %d | speed: %d | distance:%d%n", time, i, dist);
+//        System.out.printf("time: %d | speed: %d | distance:%d%n", time, i, dist);
         if(dist.compareTo(recordDistance) > 0) {
             return dist;
         }
