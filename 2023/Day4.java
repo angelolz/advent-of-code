@@ -11,7 +11,7 @@ public class Day4
     public static void main(String[] args) throws IOException
     {
         List<String> lines = Files.readAllLines(Paths.get("2023/inputs/4.txt"));
-                partOne(lines);
+        partOne(lines);
         partTwo(lines);
     }
 
