@@ -20,7 +20,6 @@ public class Day4
         int answer = 0;
         for(String line : lines)
         {
-            System.out.println(line);
             int points = 0;
             String[] winningNums = line.substring(line.indexOf(":") + 1, line.indexOf("|")).trim().split("\\s+");
             String[] lottery = line.substring(line.indexOf("|") + 1).trim().split("\\s+");
@@ -43,37 +42,28 @@ public class Day4
     private static void partTwo(List<String> lines)
     {
         Map<Integer, Integer> lotteryMap = new HashMap<>();
-        lotteryMap.put(1, 1);
         int answer;
-        int copies = 0;
-        int cardId = 1;
-        for(String line : lines)
+        for(int i = 0; i < lines.size(); i++)
         {
+            String line = lines.get(i);
             System.out.println(line);
             String[] winningNums = line.substring(line.indexOf(":") + 1, line.indexOf("|")).trim().split("\\s+");
             String[] lottery = line.substring(line.indexOf("|") + 1).trim().split("\\s+");
 
-            lotteryMap.putIfAbsent(cardId, 1);
-            cardId++;
+            int cardId = i + 1;
+            lotteryMap.putIfAbsent(cardId, 1); //the first card will always have 1 instance
+            int copies = 0;
             for(String winningNum : winningNums)
             {
-                int val = Arrays.stream(lottery).filter(num -> num.equals(winningNum)).toList().size();
-                if(val > 0) {
-                    System.out.println("val: " + val);
-                    copies = copies + val;
-                }
+                int matches = Arrays.stream(lottery).filter(num -> num.equals(winningNum)).toList().size();
+                copies += matches;
             }
 
-            for(int i = 0; i < copies; i++)
+            for(int j = 1; j <= copies; j++)
             {
-                if(cardId < lines.size())
-                {
-                    int newVal = lotteryMap.getOrDefault(cardId + i, 1) + lotteryMap.get(cardId - 1);
-                    lotteryMap.put(cardId + i, newVal);
-                }
+                int newVal = lotteryMap.getOrDefault(cardId + j, 1) + lotteryMap.get(cardId);
+                lotteryMap.put(cardId + j, newVal);
             }
-
-            copies = 0;
         }
 
         answer = lotteryMap.values().stream().mapToInt(Integer::intValue).sum();
